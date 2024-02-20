@@ -10,6 +10,9 @@ public class TouristAttraction {
 
     private List<String> category;
 
+    private String url;
+
+
     public TouristAttraction(String name, String description, String city, List<String> category){
         this.name = name;
         this.description = description;
@@ -19,6 +22,10 @@ public class TouristAttraction {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getUrl(){
+        return url;
     }
 
     public void setCategory(List<String> category) {

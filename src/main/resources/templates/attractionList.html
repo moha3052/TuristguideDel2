@@ -11,21 +11,32 @@
 <body background="https://bt.bmcdn.dk/media/cache/resolve/image_1240/image/5/57521/10750090-copenhagen-denmark.jpg">
 
 <h1>Tourist Attraction</h1>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
+
+<section>
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
 
 
-    <tr th:each="attraction : ${attractions}">
-        <td th:text="${attraction.name}"></td>
-        <td th:text="${attraction.description}"></td>
-        <td> <a href="/{name}/tags" type="submit">Tags</a></td>
-    </tr>
-</table>
+            <tr th:each="attraction : ${attractions}">
+                <td th:text="${attraction.name}"></td>
+                <td th:text="${attraction.description}"></td>
+                <td><a th:href="${attraction.url}">Tags</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="knap">
+        <button class="KnapAttraktion">Tilføj attraktion</button>
+    </div>
+</section>
 
-    <button class="KnapAttraktion">Tilføj attraktion</button>
+
+
+
+
 
 <footer>
     <p>
