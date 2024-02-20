@@ -21,7 +21,7 @@
     <tr th:each="attraction : ${attractions}">
         <td th:text="${attraction.name}"></td>
         <td th:text="${attraction.description}"></td>
-        <td> <a href="tags.html" type="submit">Tags</a></td>
+        <td> <a href="/{name}/tags" type="submit">Tags</a></td>
     </tr>
 </table>
 

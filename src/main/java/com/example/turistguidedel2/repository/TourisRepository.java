@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class TourisRepository {
-    private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
-            new TouristAttraction("Tivoli", "Forlystelsespark"),
-            new TouristAttraction("Zoologiske have", " Har beliggenhed i København."),
-            new TouristAttraction("Rundetårn", "Rundetårn er et 41,55 meter højt observationstårn, der ligger i Købmagergade i Indre By, København."),
-            new TouristAttraction("Legoland", "Legoland Billund Resort er en dansk forlystelsespark i Billund med fokus på LEGO og Legoklodser.")
+    private final List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
+            new TouristAttraction("Tivoli", "Forlystelsespark", "København",List.of("Bornevenlig")),
+            new TouristAttraction("Zoologiske have", " Har beliggenhed i København.", "København", List.of("Naturlig", "Bornevenlig")),
+            new TouristAttraction("Rundetårn", "Rundetårn er et 41,55 meter højt observationstårn, der ligger i Købmagergade i Indre By, København.", "København", List.of("Udstilling", "Koncenter", "Særarrangementer")),
+            new TouristAttraction("Legoland", "Legoland Billund Resort er en dansk forlystelsespark i Billund med fokus på LEGO og Legoklodser.", "Billund", List.of("X-treme Racers", "Polar X-plorer", "LEGO Canoe"))
     ));
 
 

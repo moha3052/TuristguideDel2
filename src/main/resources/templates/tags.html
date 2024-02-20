@@ -8,7 +8,20 @@
 <body>
     <h1>Tivoli tags</h1>
 
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
 
+
+        <tr th:each="attractionTag : ${attractionTags.getCategory()}">
+            <td th:text="${attractiontag.name}"></td>
+            <td th:text="${attractiontag.description}"></td>
+
+            <td> <a href="tags.html" type="submit">Tags</a></td>
+        </tr>
+    </table>
 
 
     <a href="attractionList.html" type="submit">Tilbage</a>
