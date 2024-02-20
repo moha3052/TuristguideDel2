@@ -1,9 +1,7 @@
 package com.example.turistguidedel2.controller;
 
-import com.example.turistguidedel2.model.TouristAttraction;
+import com.example.turistguidedel2.repository.TourisRepository;
 import com.example.turistguidedel2.service.TouristService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +12,18 @@ import java.util.List;
 @Controller
 @RequestMapping("attractions")
 public class TouristController {
-    TouristService touristService = new TouristService();
+    private final TouristService touristService;
 
-
-    @GetMapping("/alle")
-    public String getAttractions(Model model){
-        model.addAttribute("attractions", touristService.getAll());
-        return "atttractionList";
+    public TouristController(TouristService touristService){
+        this.touristService = touristService;
     }
+
+
+    @GetMapping("")
+    public String getAttractions(Model model){
+        model.addAttribute("attractions", touristService.getAllAttractions());
+        return "attractionList";
+    }
+
+
 }

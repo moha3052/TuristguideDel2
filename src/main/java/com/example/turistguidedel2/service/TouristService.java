@@ -12,8 +12,8 @@ import java.util.List;
 public class TouristService {
     TourisRepository tourisRepository = new TourisRepository();
 
-    public TourisRepository getAll(){
-        return tourisRepository;
+    public List<TouristAttraction> getAllAttractions(){
+        return tourisRepository.readfil();
     }
 
 
