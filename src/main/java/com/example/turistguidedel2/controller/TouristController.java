@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -29,15 +30,29 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getAttractionTags(Model model, @PathVariable String name ){
+        System.out.println(name);
         List<TouristAttraction> touristAttractions = touristService.getAllAttractions();
-        TouristAttraction attractions = null;
-        for(TouristAttraction attraction : touristAttractions){
-            if(attraction.getName().equals(name)){
-                attractions = attraction;
+        TouristAttraction attraction = null;
+        for(TouristAttraction touristAttraction : touristAttractions){
+            if(touristAttraction.getName().equals(name)){
+                attraction = touristAttraction;
             }
         }
-        model.addAttribute("attractionTags", attractions);
+        model.addAttribute("name", attraction.getName());
+        model.addAttribute("tags", attraction.getCategory());
         return "tags";
+    }
+
+    @GetMapping("/add")
+    public String getAdds(Model model){
+        model.addAttribute("", null);
+        return "";
+    }
+
+    @PostMapping("/save")
+    public String postSave(){
+
+        return "";
     }
 
 
