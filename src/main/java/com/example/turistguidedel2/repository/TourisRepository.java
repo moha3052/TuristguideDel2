@@ -27,6 +27,18 @@ public class TourisRepository {
         return null;
     }
 
+    public TouristAttraction addAttraction(TouristAttraction touristAttraction) {
+        touristAttractionList.add(touristAttraction);
+        return touristAttraction;
+    }
+
+    public TouristAttraction save(TouristAttraction touristAttraction) {
+        if (touristAttraction != null) {
+            touristAttractionList.contains(touristAttraction);
+        }
+        return touristAttraction;
+    }
+
 
 
     public TouristAttraction updateAttraction(TouristAttraction touristAttraction){

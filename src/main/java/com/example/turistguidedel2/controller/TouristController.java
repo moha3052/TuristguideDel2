@@ -5,11 +5,9 @@ import com.example.turistguidedel2.repository.TourisRepository;
 import com.example.turistguidedel2.service.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,7 +28,6 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getAttractionTags(Model model, @PathVariable String name ){
-        System.out.println(name);
         List<TouristAttraction> touristAttractions = touristService.getAllAttractions();
         TouristAttraction attraction = null;
         for(TouristAttraction touristAttraction : touristAttractions){
@@ -38,22 +35,23 @@ public class TouristController {
                 attraction = touristAttraction;
             }
         }
-        model.addAttribute("name", attraction.getName());
-        model.addAttribute("tags", attraction.getCategory());
+        model.addAttribute("attraction", attraction);
         return "tags";
     }
 
     @GetMapping("/add")
-    public String getAdds(Model model){
-        model.addAttribute("", null);
-        return "";
+    public String addAttraction(TouristAttraction touristAttraction, Model model) {
+        model.addAttribute("addAttractions", touristService.addAttraction(touristAttraction));
+        return "opretAttraction";
     }
 
     @PostMapping("/save")
-    public String postSave(){
-
-        return "";
+    public String save(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.save(touristAttraction);
+        return "opretAttraction";
     }
+
+
 
 
 

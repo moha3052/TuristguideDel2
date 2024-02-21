@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3942/3942076.png">
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 
 <body>
@@ -13,12 +15,17 @@
     <div>
         <table>
             <tr>
-                <th>Tag name</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>city</th>
+
              </tr>
 
-            <tr th:each="attractionTag : ${tags}">
+            <tr th:each="attractionTag : ${attraction}">
+                <td th:text="${attractionTag.name}" ></td>
+            <td th:text="${attractionTag.description}"></td>
+            <td th:text="${attractionTag.city}"></td>
 
-            <td th:text="${attractionTag}"></td>
             </tr>
 
         </table>
@@ -27,8 +34,9 @@
 
 
 
-
-    <a href="http://localhost:8080/attractions" type="submit">Tilbage</a>
+<button>
+    <a href="http://localhost:8080/attractions" class="tilbage"  type="submit">Tilbage</a>
+</button>
 </body>
 
 </html>

@@ -16,6 +16,16 @@ public class TouristService {
         return tourisRepository.readfil();
     }
 
+    public TouristAttraction addAttraction(TouristAttraction touristAttraction) {
+        tourisRepository.addAttraction(touristAttraction);
+        return touristAttraction;
+    }
+
+    public TouristAttraction save(TouristAttraction touristAttraction) {
+        tourisRepository.save(touristAttraction);
+        return touristAttraction;
+    }
+
 
     public TouristAttraction update(TouristAttraction touristAttraction){
         tourisRepository.updateAttraction(touristAttraction);
