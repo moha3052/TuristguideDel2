@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,15 +39,24 @@ public class TouristController {
     }
 
     @GetMapping("/add")
-    public String addAttraction(TouristAttraction touristAttraction, Model model) {
-        model.addAttribute("addAttractions", touristService.addAttraction(touristAttraction));
+    public String addForm(Model model) {
+        model.addAttribute("tA", new TouristAttraction());
+        model.addAttribute("city", touristService.getCity());
+        model.addAttribute("tags", touristService.getNameByTags());
         return "opretAttraction";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute TouristAttraction touristAttraction) {
-        touristService.save(touristAttraction);
-        return "opretAttraction";
+    public String addAttraction(@ModelAttribute TouristAttraction touristAttraction, Model model) {
+        model.addAttribute("add",touristService.addAttraction(touristAttraction));
+        return "redirect:/attractions";
+    }
+
+
+    @GetMapping("/delete/{name}")
+    public String delete(@PathVariable String name) {
+        touristService.delete(name);
+        return "redirect:/attractionList";
     }
 
 

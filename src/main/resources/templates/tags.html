@@ -17,14 +17,15 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>city</th>
+                <th>Category</th>
+                <th>City</th>
 
              </tr>
 
             <tr th:each="attractionTag : ${attraction}">
                 <td th:text="${attractionTag.name}" ></td>
-            <td th:text="${attractionTag.description}"></td>
-            <td th:text="${attractionTag.city}"></td>
+            <td th:text="${attractionTag.tags}"></td>
+
 
             </tr>
 

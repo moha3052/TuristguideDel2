@@ -12,8 +12,10 @@ import java.util.List;
 public class TouristService {
     TourisRepository tourisRepository = new TourisRepository();
 
+
+
     public List<TouristAttraction> getAllAttractions(){
-        return tourisRepository.readfil();
+        return tourisRepository.findAllAttractions();
     }
 
     public TouristAttraction addAttraction(TouristAttraction touristAttraction) {
@@ -26,22 +28,20 @@ public class TouristService {
         return touristAttraction;
     }
 
-
-    public TouristAttraction update(TouristAttraction touristAttraction){
-        tourisRepository.updateAttraction(touristAttraction);
-        return touristAttraction;
+    public void delete(String name) {
+        TouristAttraction touristAttraction = tourisRepository.findByName(name);
+        if (touristAttraction != null) {
+            tourisRepository.delete(touristAttraction);
+        }
     }
 
-    public void create(TouristAttraction touristAttraction){
-        tourisRepository.createAttraction(touristAttraction);
+    public List<String> getNameByTags(){
+        return tourisRepository.getNameByTags();
     }
 
-    public List<TouristAttraction> readAtrraktioner(){
-        return tourisRepository.readfil();
-    }
+    public List<String> getCity(){
+        return tourisRepository.getCity();
 
-    public void delete(TouristAttraction touristAttraction){
-        tourisRepository.deleteAttraction(touristAttraction);
     }
 
 }
