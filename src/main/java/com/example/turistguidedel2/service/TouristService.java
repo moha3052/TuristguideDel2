@@ -44,4 +44,21 @@ public class TouristService {
 
     }
 
+    public TouristAttraction findByName(String name) {
+        return tourisRepository.findByName(name);
+    }
+
+    public TouristAttraction updateAttraction(String name, TouristAttraction updatedAttraction){
+        for (TouristAttraction attraction : tourisRepository.findAllAttractions()){
+            if (attraction.getName().equals(name)){
+                attraction.setDescription(updatedAttraction.getDescription());
+                attraction.setCity(updatedAttraction.getCity());
+                attraction.setTagList(updatedAttraction.getTagList());
+                return attraction;
+            }
+        }
+        return null;
+    }
+
+
 }

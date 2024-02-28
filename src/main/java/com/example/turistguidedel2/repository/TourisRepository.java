@@ -17,6 +17,7 @@ public class TourisRepository {
             new TouristAttraction("Legoland", "Legoland Billund Resort er en dansk forlystelsespark i Billund med fokus på LEGO og Legoklodser.", "Billund", List.of("X-treme Racers", "Polar X-plorer", "LEGO Canoe"))
     ));
 
+
     public TouristAttraction findByName(String name) {
         for (TouristAttraction attraction : touristAttractionList) {
             if (attraction.getName().equals(name)) {
@@ -46,6 +47,10 @@ public class TourisRepository {
         return touristAttractionList;
     }
 
+    public List<TouristAttraction> touristAttractionList(){
+        return touristAttractionList;
+    }
+
 
 
     public TouristAttraction addAttraction(TouristAttraction touristAttraction) {
@@ -64,16 +69,8 @@ public class TourisRepository {
 
 
 
-    public TouristAttraction updateAttraction(TouristAttraction touristAttraction){
-        for (TouristAttraction attraction : touristAttractionList){
-            if (attraction.getName().equals(touristAttraction.getName())){
-                attraction.setName(touristAttraction.getName());
-                attraction.setDescription(attraction.getDescription());
-                return touristAttraction;
-            }
-        }
-        return null;
-    }
+
+
 
     public TouristAttraction delete(TouristAttraction touristAttraction) {
         touristAttractionList.removeIf(attraction -> attraction.getName().equals(touristAttraction.getName()));

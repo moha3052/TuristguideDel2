@@ -1,67 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="da">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Tilføj Attraktion</title>
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3942/3942076.png">
-  <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" type="text/css" href="/opret.css">
 </head>
-
 <body>
 
+<h1>Tilføj attraktion</h1>
+<form action="/attractions/save" method="post" th:object="${tA}">
 
-<h1>Add attraction</h1>
-<form action="/attractions/save" method="post">
-  <ul>
-    <li>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"/>
-    </li>
+  <div class="form-group">
+    <label for="name">Navn på Attraktioner:</label>
+    <input id="name" name="name" th:value="${tA.name}" type="text" required>
+  </div>
 
-    <li>
-      <label for="description">Description:</label>
-      <input type="text" id="description" name="description" />
-    </li>
-  </ul>
+  <div class="form-group">
+    <label for="description">Beskrivelse af en attraktion:</label>
+    <input id="description" name="description" th:value="${tA.description}" type="text" required>
+  </div>
 
-  <fieldset>
-    <legend>City</legend>
-    <p>
-      <select id="city" name="city">
-        <option value="København">København</option>
-        <option value="Aarhus">Aarhus</option>
-        <option value="Aalborg">Aalborg</option>
-        <option value="Odense">Odense</option>
-        <option value="Esbjerg">Esbjerg</option>
-      </select>
-    </p>
-  </fieldset>
+  <div class="form-group">
+    <label for="city">By:</label>
+    <select id="city" name="city" th:field="*{city}">
+      <option th:each="c : ${city}" th:value="${c}" th:text="${c}"></option>
+    </select>
+  </div>
 
-  <fieldset>
-    <legend>Tags</legend>
-    <p>
-      <input type="checkbox" name="tagList" id="size_1" value="børnevenlig">
-      <label for="size_1">Børnevenlig</label>
+  <div class="form-group">
+    <label>Tags:</label>
+    <div th:each="tag : ${tags}">
+      <input type="checkbox" th:field="*{tagList}" th:value="${tag}">
+      <label th:text="${tag}"></label>
+    </div>
+  </div>
 
-      <input type="checkbox" name="tagList" id="size_2" value="gratis">
-      <label for="size_2">Gratis</label>
-
-      <input type="checkbox" name="tagList" id="size_3" value="kunst">
-      <label for="size_3">Kunst</label>
-
-      <input type="checkbox" name="tagList" id="size_4" value="museum">
-      <label for="size_4">Museum</label>
-
-      <input type="checkbox" name="tagList" id="size_5" value="natur">
-      <label for="size_4">Natur</label>
-    </p>
-  </fieldset>
-
-  <button type="submit">Add attraction</button>
-  <button> <a href="http://localhost:8080/attractions" type="submit">Regret</a> </button>
+  <div class="form-actions">
+    <button type="submit">Tilføj attraktion</button>
+    <a href="http://localhost:8080/attractions">Fortryd</a>
+  </div>
 </form>
-
-
 
 </body>
 </html>

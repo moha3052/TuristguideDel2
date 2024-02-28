@@ -2,42 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Attraktion Tags</title>
+
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3942/3942076.png">
     <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
-
 <body>
-
-<h1 th:text="${name}"></h1>
 
 <section>
     <div>
+        <h2 th:text="${attraction.name}"></h2>
         <table>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Category</th>
                 <th>City</th>
-
-             </tr>
-
-            <tr th:each="attractionTag : ${attraction}">
-                <td th:text="${attractionTag.name}" ></td>
-            <td th:text="${attractionTag.tags}"></td>
-
-
             </tr>
-
+            <tr>
+                <td th:text="${attraction.name}">Navn</td>
+                <td th:text="${attraction.description}">Beskrivelse</td>
+                <td th:text="${attraction.city}">By</td>
+            </tr>
         </table>
     </div>
 </section>
 
+<section>
+    <div>
+        <h2>Tags</h2>
+        <table>
+            <tr>
+                <th>Tags</th>
+            </tr>
+            <tr th:each="tag : ${tags}">
+                <td th:text="${tag}">Tag</td>
+            </tr>
+        </table>
+    </div>
+</section>
 
+<div>
+    <a href="/attractions" class="KnapAttraktion">Tilbage</a>
+</div>
 
-<button>
-    <a href="http://localhost:8080/attractions" class="tilbage"  type="submit">Tilbage</a>
-</button>
 </body>
-
 </html>

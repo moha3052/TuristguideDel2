@@ -1,12 +1,12 @@
 package com.example.turistguidedel2.controller;
 
 import com.example.turistguidedel2.model.TouristAttraction;
-import com.example.turistguidedel2.repository.TourisRepository;
 import com.example.turistguidedel2.service.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -22,27 +22,27 @@ public class TouristController {
     @GetMapping("")
     public String getAttractions(Model model){
         model.addAttribute("attractions", touristService.getAllAttractions());
-        return "attractionList";
+        return "allAttractionList";
     }
 
     @GetMapping("/{name}/tags")
-    public String getAttractionTags(Model model, @PathVariable String name ){
-        List<TouristAttraction> touristAttractions = touristService.getAllAttractions();
-        TouristAttraction attraction = null;
-        for(TouristAttraction touristAttraction : touristAttractions){
-            if(touristAttraction.getName().equals(name)){
-                attraction = touristAttraction;
-            }
+    public String getAttractionTags(Model model, @PathVariable String name) {
+        TouristAttraction attraction = touristService.findByName(name);
+        if (attraction != null) {
+            model.addAttribute("attraction", attraction);
+            model.addAttribute("tags", attraction.getTagList());
         }
-        model.addAttribute("attraction", attraction);
         return "tags";
     }
 
+
     @GetMapping("/add")
     public String addForm(Model model) {
+        List<String> cityList = Arrays.asList("København", "Aarhus", "Aalborg", "Odense", "Esbjerg");
+        List<String> tagsList = Arrays.asList("Børnevenlig", "Gratis", "Kunst", "Museum", "Natur");
         model.addAttribute("tA", new TouristAttraction());
-        model.addAttribute("city", touristService.getCity());
-        model.addAttribute("tags", touristService.getNameByTags());
+        model.addAttribute("city", cityList);
+        model.addAttribute("tags", tagsList);
         return "opretAttraction";
     }
 
@@ -56,8 +56,15 @@ public class TouristController {
     @GetMapping("/delete/{name}")
     public String delete(@PathVariable String name) {
         touristService.delete(name);
-        return "redirect:/attractionList";
+        return "redirect:/attractions";
     }
+
+    @PostMapping("updateAttraction")
+    public String updatedAttraction(@ModelAttribute("tA") TouristAttraction updatedTouristAttraction) {
+        touristService.updateAttraction(updatedTouristAttraction.getName(), updatedTouristAttraction);
+        return "UpdateAttraction";
+    }
+
 
 
 
