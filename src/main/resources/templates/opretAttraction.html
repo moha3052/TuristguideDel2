@@ -28,8 +28,8 @@
     </select>
   </div>
 
+  <label>Tags:</label>
   <div class="form-group">
-    <label>Tags:</label>
     <div th:each="tag : ${tags}">
       <input type="checkbox" th:field="*{tagList}" th:value="${tag}">
       <label th:text="${tag}"></label>

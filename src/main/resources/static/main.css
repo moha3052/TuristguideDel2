@@ -24,6 +24,15 @@ button{
     background-color: white;
 }
 
+.KnapAttraktion{
+    display: block;
+    padding: 10px 20px;
+    color:  #0056b3;
+    border: none;
+    border-radius: 5px;
+    transition: 0.9s;
+    margin: 10px auto;
+}
 
 .tilbage{
     display: block;
@@ -38,8 +47,11 @@ button{
 
 
 .knap{
-    text-align: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1em;
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .KnapAttraktion:active{

@@ -29,7 +29,7 @@
                 <td th:text="${attraction.description}"></td>
                 <td><a class="tagKnap" th:href="@{'/attractions/' + ${attraction.getName()} + '/tags'}">Tags</a></td>
                 <td><a class="tagKnap" th:href="'/attractions/delete/'+ ${attraction.name}">Slet</a></td>
-                <td><a class="tagKnap" th:href="@{'/attractions/' + ${attraction.getName()} + '/'}">Opdater</a></td>
+                <td><a class="tagKnap" th:href="@{'/attractions/edit/' + ${attraction.name}}">Opdater</a></td>
             </tr>
         </table>
 
@@ -47,7 +47,7 @@
 
 <footer>
     <p>
-  Contact us on  <a href="mailto:tourist-attraktion2024@hotmail.com">tourist-attraktion2024@hotmail.com</a>
+
     </p>
 </footer>
 

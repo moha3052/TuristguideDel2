@@ -23,10 +23,6 @@ public class TouristService {
         return touristAttraction;
     }
 
-    public TouristAttraction save(TouristAttraction touristAttraction) {
-        tourisRepository.save(touristAttraction);
-        return touristAttraction;
-    }
 
     public void delete(String name) {
         TouristAttraction touristAttraction = tourisRepository.findByName(name);
@@ -35,8 +31,8 @@ public class TouristService {
         }
     }
 
-    public List<String> getNameByTags(){
-        return tourisRepository.getNameByTags();
+    public List<String> getTagsByName(String name){
+        return tourisRepository.getTagsByName(name);
     }
 
     public List<String> getCity(){
@@ -44,20 +40,17 @@ public class TouristService {
 
     }
 
+    public List<String> getAllTags(){
+        return tourisRepository.getAllTags();
+    }
+
     public TouristAttraction findByName(String name) {
         return tourisRepository.findByName(name);
     }
 
-    public TouristAttraction updateAttraction(String name, TouristAttraction updatedAttraction){
-        for (TouristAttraction attraction : tourisRepository.findAllAttractions()){
-            if (attraction.getName().equals(name)){
-                attraction.setDescription(updatedAttraction.getDescription());
-                attraction.setCity(updatedAttraction.getCity());
-                attraction.setTagList(updatedAttraction.getTagList());
-                return attraction;
-            }
-        }
-        return null;
+
+    public TouristAttraction editAttraction(TouristAttraction touristAttraction){
+        return tourisRepository.editAttraction(touristAttraction);
     }
 
 
